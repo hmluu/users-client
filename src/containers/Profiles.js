@@ -39,7 +39,7 @@ class Profiles extends Component {
   render() {
     return (
     <div className="userList">
-      <ul>
+      <ul className="users">
         <h2 className="title">List Of Users</h2>
         {this.state.profiles.map(profile => {
             return <li onClick={() => this.showInfo(profile)} key={profile.id}>{profile.first} {profile.last}</li>
