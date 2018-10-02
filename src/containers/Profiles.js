@@ -26,29 +26,30 @@ class Profiles extends Component {
       location: "Springfield, IL",
       description: "Bart skateboards everywhere."
     }],
-    displayedProfile: false,
+    displayedProfile: null,
   };
   
   showInfo = (profile) => {
     this.setState({
-      profiles: [this.state.profiles, profile],
-      displayedProfile: true,
+      displayedProfile: profile,
+
     })
   }
 
   render() {
     return (
-      <div className="userList">
+    <div className="userList">
       <ul>
         <h2>List Of Users</h2>
-          {this.state.profiles.map(profile => {
-            if (!this.state.displayedProfile) 
-              return <li onClick={() => this.showInfo(profile)} key={profile.id}>{profile.first} {profile.last}</li>
-              return <section key={profile} >
-                      {profile.first} {profile.last} {profile.age} {profile.location} {profile.description}
-                    </section>
+        {this.state.profiles.map(profile => {
+            return <li onClick={() => this.showInfo(profile)} key={profile.id}>{profile.first} {profile.last}</li>
           })}
-        </ul>
+      </ul>
+    <div>
+        {this.state.displayedProfile ? <section key={this.state.displayedProfile.id}>
+          {this.state.displayedProfile.first} {this.state.displayedProfile.last} {this.state.displayedProfile.age} {this.state.displayedProfile.location} {this.state.displayedProfile.description}
+         </section> : 'Select A Profile'}
+    </div>
     </div>
      
     )
