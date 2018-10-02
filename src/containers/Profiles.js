@@ -2,33 +2,58 @@ import React, { Component } from 'react';
 
 class Profiles extends Component {
   state = {
-    isLoading: true,
-    profiles: []
+    profiles: [{
+      id: 1,
+      first: "John",
+      last: "Roberts",
+      age: 51,
+      location: "Chicago, IL",
+      description: "John is a retired YouTuber"
+    },
+    {
+      id: 2,
+      first: "Frita",
+      last: "Waters",
+      age: 27,
+      location: "Phoenix, AZ",
+      description: "Frita loves the desert, cheese, and turtles."
+    },
+    {
+      id: 3,
+      first: "Bart",
+      last: "Simpson",
+      age: 24,
+      location: "Springfield, IL",
+      description: "Bart skateboards everywhere."
+    }],
+    displayedProfile: false,
   };
-
-  componentDidMount() {
-    const API_URL = "http://localhost:3000/api/v1/profiles"
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(profiles => {
-        this.setState({
-          profiles,
-          isLoading: false
-        })
-      });
+  
+  showInfo = (profile) => {
+    this.setState({
+      profiles: [this.state.profiles, profile],
+      displayedProfile: true,
+    })
   }
 
   render() {
     return (
-      <div>
-      <h2>Names</h2>
-      {this.state.isLoading ? <h2>Loading Profiles...</h2> : this.state.profiles.map(profile => (
-        <li key={profile.id}>{profile.first} {profile.last}</li>
-      ))}
-      
-      </div>
+      <div className="userList">
+      <ul>
+        <h2>List Of Users</h2>
+          {this.state.profiles.map(profile => {
+            if (!this.state.displayedProfile) 
+              return <li onClick={() => this.showInfo(profile)} key={profile.id}>{profile.first} {profile.last}</li>
+              return <section key={profile} >
+                      {profile.first} {profile.last} {profile.age} {profile.location} {profile.description}
+                    </section>
+          })}
+        </ul>
+    </div>
+     
     )
   }
 }
+
 
 export default Profiles;
