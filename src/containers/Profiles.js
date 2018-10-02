@@ -40,13 +40,13 @@ class Profiles extends Component {
     return (
     <div className="userList">
       <ul>
-        <h2>List Of Users</h2>
+        <h2 className="title">List Of Users</h2>
         {this.state.profiles.map(profile => {
             return <li onClick={() => this.showInfo(profile)} key={profile.id}>{profile.first} {profile.last}</li>
           })}
       </ul>
     <div>
-        {this.state.displayedProfile ? <section key={this.state.displayedProfile.id}>
+        {this.state.displayedProfile ? <section className="section" key={this.state.displayedProfile.id}>
           {this.state.displayedProfile.first} {this.state.displayedProfile.last} {this.state.displayedProfile.age} {this.state.displayedProfile.location} {this.state.displayedProfile.description}
          </section> : 'Select A Profile'}
     </div>
