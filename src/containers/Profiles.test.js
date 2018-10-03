@@ -8,6 +8,11 @@ it('renders without crashing', () => {
   shallow(<Profiles/>);
 });
 
+it('should render correctly', () => {
+  const wrapper = shallow(<Profiles />);
+  expect(wrapper).toMatchSnapshot();
+});
+
 it('renders without crashing', () => {
   const wrapper = shallow(<Profiles />);
   const title = <h2 className="title">List Of Users</h2>;
