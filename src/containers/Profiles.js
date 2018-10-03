@@ -32,7 +32,6 @@ class Profiles extends Component {
   showInfo = (profile) => {
     this.setState({
       displayedProfile: profile,
-
     })
   }
 
