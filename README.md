@@ -1,6 +1,7 @@
 ## Generate users list and detailed information for each user.
 
 ## Setup
+* yarn
 * yarn start
 
 ## To Test
